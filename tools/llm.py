@@ -6,10 +6,9 @@ import litellm
 from dotenv import load_dotenv
 
 load_dotenv()
-
 DEFAULT_MODELS = (
-    "gemini/gemini-3.8-flash,"
     "gemini/gemini-3.5-flash,"
+    "gemini/gemini-3.8-flash,"
     "groq/openai/gpt-oss-120b"
 )
 FALLBACK_MODELS = [

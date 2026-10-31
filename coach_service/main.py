@@ -270,3 +270,12 @@ def get_digest(topic: str):
         raise HTTPException(status_code=404, detail="No digest found for this topic yet")
     content, created_at = digest
     return {"topic": topic, "digest": content, "created_at": created_at}
+
+@app.post('/ask', dependencies=[Depends(rate_limit("ask"))])
+def ask(request: AskRequest):
+    logging.info("ask: %s", request.query)
+    try:
+        return coach.answer_question(request.query, request.auto_research, request.topic)
+    except Exception as e:
+        logging.error(f"/ask failed: {type(e).__name__}: {e}")
+        raise HTTPException(status_code=503, detail="The answer service is temporarily unavailable. Please try again.")
