@@ -1,4 +1,4 @@
-# ur_coach
+# research-coach
 
 An AI research assistant that answers your questions from recent papers and articles, with numbered sources and a credibility score for each one. Follow a topic and it keeps itself up to date.
 
